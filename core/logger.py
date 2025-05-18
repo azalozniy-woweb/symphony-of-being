@@ -85,3 +85,15 @@ def trace_method(class_name):
             return method(self, *args, **kwargs)
         return wrapper
     return decorator
+
+def log_message(tick, *, being=None, signal=None, reaction=None, vibration=None, response=None):
+    parts = [f"T={tick}"]
+    if signal:
+        parts.append(f"INPUT='{signal}'")
+    if reaction:
+        parts.append(f"→ {reaction}")
+    if vibration:
+        parts.append(f"VIBE={getattr(vibration, 'word', '...')}")
+    if response:
+        parts.append(f"OUTPUT={response.get('word', '...')}")
+    print(" ".join(parts))

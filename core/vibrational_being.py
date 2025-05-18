@@ -1,5 +1,5 @@
 from collections import deque
-from core.logger import trace_method, log_input, flush_tick
+from core.logger import trace_method, log_input, flush_tick, log_message
 from core.memory import Memory
 from core.state import State
 from core.brain import Brain
@@ -118,6 +118,10 @@ class VibrationalBeing:
         self.brain.learn(self.last_signal, response)
         self.last_signal = response
 
+        # 🧠 Сгенерировать отклик на основе вибрации
+        response_data = self.generate_response(vibration)
+        log_message(self.tick, response=response_data)
+
         if is_sentence:
             print(f"Ответ на предложение: {response}")
             log_input(self.tick, f"Ответ на предложение: {response}")
@@ -136,3 +140,18 @@ class VibrationalBeing:
             word=word,
             source=source
         )
+
+    @trace_method("VibrationalBeing.generate_response")
+    def generate_response(self, vibration):
+        if not vibration:
+            return {"word": "...", "emotion": "нейтрально"}
+
+        word = self.brain.predict_response(vibration.word) or "..."
+
+        return {
+            "word": word,
+            "emotion": vibration.emotion,
+            "chakra": vibration.chakra,
+            "intensity": vibration.intensity,
+            "source": "self"
+        }
