@@ -29,4 +29,4 @@ MIT License
 ---
 
 Автор: Артур Залозный  
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/azalozniy-woweb
