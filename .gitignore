@@ -1,0 +1,24 @@
+# Игнорируем временные и системные файлы
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+venv/
+env/
+ENV/
+
+*.log
+log_state.json
+
+data/brain.db
+
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
+
+AppData/
+AppData/Local/BraveSoftware/
